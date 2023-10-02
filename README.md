@@ -46,31 +46,36 @@ videoId (string): ID of the video recording
 ```
 ### Complete Video Recording
 
-URL: /complete-video/:videoId
-Method: POST
-Parameters:
+- **URL**: `/complete-video/:videoId`
+- **Method**: POST
+- **Parameters**:
+```json
 videoId (string): ID of the video recording
-Request Body:
-{
+```
+#### Request Body:
+```json{
   "timestamps": [1, 2, 3], // Timestamps for the video
   "url": "video_url" // URL to the saved video file
 }
-
-Response:
+```
+#### Response:
+```json 
 {
   "name": "Test Video",
   "timestamps": [1, 2, 3],
   "url": "video_url"
 }
-
-Get Video Details
+```
+## Get Video Details
 Retrieve details of a completed video recording.
 
-URL: /video-details/:videoId
-Method: GET
-Parameters:
+- **URL**: `/video-details/:videoId`
+- **Method**: GET
+- **Parameters**:
+```json
 videoId (string): ID of the video recording
-Response:
+```
+#### Response:
 ```json
 {
   "name": "Test Video",
@@ -79,7 +84,7 @@ Response:
 }
 ```
 
-Transcription Service (Background Process)
+## Transcription Service (Background Process)
 Video transcription is handled as a background process using RabbitMQ and Whisper. When a video is marked as complete, the transcription process is triggered. The transcription service listens for transcription requests, transcribes videos, and saves results to the database.
 
 Usage
